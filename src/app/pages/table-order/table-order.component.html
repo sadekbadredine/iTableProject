@@ -1,0 +1,64 @@
+<section style="margin-top:20px ;" fxLayout fxLayoutAlign="center center">
+  <form (ngSubmit)="onTakeOrder()" [formGroup]="orderForm">
+    <mat-card fxFlex.xs="100%" md-theme="default">
+      <div fxLayout fxLayoutAlign="start stretch" >
+        <mat-icon style="cursor: pointer;" (click)="onGoBack()">chevron_left</mat-icon>
+      </div>
+      <mat-card-title fxLayoutAlign="center">ENJOY YOUR MEAL</mat-card-title>
+      <mat-card-content fxLayoutAlign="center">
+        <div formArrayName="items">
+          <div 
+            fxLayout="row" 
+            fxLayoutGap="10px" 
+            *ngFor="let itemCtrl of itemsCtrls; let i = index" 
+            [formGroupName]="i">
+            <!-- Delete Item -->
+            <button 
+              *ngIf="showDeleteIcon()" 
+              (click)="onDeleteItem(i)" 
+              style="margin-top: 5px!important;"
+              mat-icon-button color="primary">
+              <mat-icon>cancel</mat-icon>
+            </button>
+            <!-- Select Item  -->
+            <mat-form-field appearance="outline">
+              <mat-label>Item</mat-label>
+              <mat-select #selectedItemPrice formControlName="product">
+                <mat-option 
+                  (onSelectionChange)="onSelectItem(item.data.product)" 
+                  *ngFor="let item of products" 
+                  [value]="item.data.product.price">
+                  {{ item.data.product.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!-- Quantity -->
+            <mat-form-field style="width:100px!important;" appearance="outline">
+              <mat-label>Quantity</mat-label>
+              <input 
+                formControlName="quantity" 
+                type="number" 
+                matInput 
+                #price
+                placeholder="0" 
+                (change)="onSelectQuantity(+price.value,i,selectedItemPrice)">
+            </mat-form-field>
+            <!-- Price -->
+            <div 
+              fxLayoutAlign="center center" 
+              class="price"> {{ getPrice(i) + ' $' }} </div>
+            <!-- Add Item -->
+            <button  style="margin-top: 5px!important;" mat-icon-button color="primary">
+              <mat-icon (click)="addItem()">add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions fxLayoutAlign="center">
+        <button type="submit" [disabled]="orderForm.invalid" mat-raised-button color="primary">
+          Submit Order
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</section>

@@ -1,0 +1,50 @@
+<div *ngIf="!!table">
+  <div
+    class="welcome"
+    *ngIf="table.data.status === 'AVAILABLE'; else showTable"
+  >
+    <p><strong>WELCOME TO CHOCOLATE BAR</strong></p>
+  </div>
+  <ng-template #showTable>
+    <div gdAlignColumns="center stretch">
+      <div [ngClass]="[screenOrientation, 'flex-container']" style="margin-bottom: 10px;">
+        <mat-card>
+          <mat-card-title>TAKE ORDER</mat-card-title>
+          <mat-card-actions>
+            <button mat-fab (click)="onTakeOrder()">
+              <mat-icon>arrow_forward_ios</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+  
+        <mat-card>
+          <mat-card-title>CHECK OUT</mat-card-title>
+          <mat-card-actions>
+            <button mat-fab color="warn" (click)="onCashCheckout()">
+              <mat-icon>arrow_forward_ios</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+  
+        <mat-card>
+          <mat-card-title>VIEW MENU</mat-card-title>
+          <mat-card-actions>
+            <button mat-fab color="primary" (click)="onViewMenu()">
+              <mat-icon>arrow_forward_ios</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+  
+        <mat-card>
+          <mat-card-title>CALL WAITER</mat-card-title>
+          <mat-card-actions>
+            <button mat-fab class="waiter" (click)="onCallWaiter(table.id)">
+              <mat-icon>person</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+  
+      </div>
+    </div>
+  </ng-template>
+</div>

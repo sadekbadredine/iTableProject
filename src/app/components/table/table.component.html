@@ -1,0 +1,9 @@
+<div
+  (click)="onOpenTable(table)"
+  class="table"
+  [ngStyle]="{ 'background-color': getBackgroundColor() }"
+>
+  <div style="font-size: 30px" [ngStyle]="{ color: getFontColor() }">
+    {{ table.data.id }}
+  </div>
+</div>
