@@ -1,3 +1,7 @@
+#Introduction
+i-Table application is a software designed to facilitate the communication between the customer and the waiter in the restaurent, where the application will be open on two devices (iWatch for the waiter, and on the tablet for the customer), where the waiter can see and control talbes in the restaurent by an interactive grid of colored boxes representing the satuses of the tables (Black: empty, White: occupied, Green: take order, Red: check-out, Orange: call waiter), and on the customer hand (on the tablet), the customer will be able to four control buttons ( take order, check out, call waiter and view menu) 
+
+
 # ITableProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
